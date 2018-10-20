@@ -23,3 +23,6 @@
 hs_err_pid*
 /app/lo54-project/target/
 /app/lo54-project/nbproject/
+
+# Vagrant
+database/.vagrant/

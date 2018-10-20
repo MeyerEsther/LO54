@@ -1,5 +1,7 @@
 package fr.utbm.lo54.project.api;
 
+import fr.utbm.lo54.project.model.Location;
+import fr.utbm.lo54.project.service.SQLDatabaseService;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -22,7 +24,10 @@ public class Hello {
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   public String sayPlainTextHello() {
-    return "Hello Jersey";
+      Location loc = new Location(new Long(1), "Paris");
+      SQLDatabaseService service = new SQLDatabaseService();
+      service.createRecordLocation(loc);
+    return "Hello Jersey" + loc;
   }
 
   // This method is called if XML is request
@@ -36,8 +41,10 @@ public class Hello {
   @GET
   @Produces(MediaType.TEXT_HTML)
   public String sayHtmlHello() {
-    return "<html> " + "<title>" + "Hello Jersey" + "</title>"
-        + "<body><h1>" + "Hello Jersey" + "</body></h1>" + "</html> ";
+    Location loc = new Location(new Long(1), "Paris");
+      SQLDatabaseService service = new SQLDatabaseService();
+      service.createRecordLocation(loc);
+    return "Hello Jersey" + loc;
   }
 
 }

@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+    # Define specs of the Vm
+
+    config.vm.box = "ubuntu/bionic64"
+  
+    # We set-up the proxy if any
+
+    if Vagrant.has_plugin?("vagrant-proxyconf")
+      config.proxy.http     = ENV["http_proxy"]
+      config.proxy.https    = ENV["https_proxy"]
+      config.proxy.no_proxy = ENV["no_proxy"]
+      config.proxy.enabled = { docker: true }
+    end
+
+    # Port for Adminer
+    config.vm.network "forwarded_port", guest: 3306, host: 3306, host_ip: "127.0.0.1"
+
+    # Port for MariaDB
+    config.vm.network "forwarded_port", guest: 8081, host: 8081, host_ip: "127.0.0.1"
+
+    config.vm.provision "shell", inline: <<-SCRIPT
+    sudo apt-get update
+    sudo apt-get dist-upgrade -y
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sudo sh get-docker.sh
+    sudo apt-get install docker-compose -y
+    cd /vagrant && sudo docker-compose up -d
+    SCRIPT
+
+end
