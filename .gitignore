@@ -10,6 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+#Hibernate temporary files
+.LCKhibernate.cfg.xml~
+
 # Package Files #
 *.jar
 *.war
