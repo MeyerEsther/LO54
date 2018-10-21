@@ -21,7 +21,7 @@ public class SQLDatabaseService implements LocationStorerDao {
     private final static Logger logger = Logger.getLogger(SQLDatabaseService.class);
 
     @Override
-    public Long createRecordLocation(Location location) {
+    public Integer createRecordLocation(Location location) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         
         Transaction tran = session.beginTransaction();

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface LocationStorerDao {
     
-    public Long createRecordLocation(Location location);
+    public Integer createRecordLocation(Location location);
     public void updateRecordLocation(Location location);
     public void deleteRecordLocation(Location location);
     public List<Location> getRecordsLocation();

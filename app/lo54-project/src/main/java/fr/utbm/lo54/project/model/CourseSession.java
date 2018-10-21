@@ -31,7 +31,7 @@ public class CourseSession implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable=false, unique=true)
-    private Long id;
+    private Integer id;
     
     @Column(name="start_date", nullable=false)
     private Date startDate;
@@ -43,7 +43,7 @@ public class CourseSession implements Serializable {
     private Integer max;
     
     @OneToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "course_code")
     private Course course;
     
     @OneToOne
@@ -53,7 +53,7 @@ public class CourseSession implements Serializable {
     public CourseSession() {
     }
 
-    public CourseSession(Long id, Date startDate, Date endDate, Integer max, Course course, Location location) {
+    public CourseSession(Integer id, Date startDate, Date endDate, Integer max, Course course, Location location) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -62,11 +62,11 @@ public class CourseSession implements Serializable {
         this.location = location;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -26,7 +26,7 @@ public class Location implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable=false, unique=true)
-    private Long id;
+    private Integer id;
     
     @Column(name="city", nullable=false, unique=true)
     private String city;
@@ -34,16 +34,16 @@ public class Location implements Serializable {
     public Location() {
     }
 
-    public Location(Long id, String city) {
+    public Location(Integer id, String city) {
         this.id = id;
         this.city = city;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

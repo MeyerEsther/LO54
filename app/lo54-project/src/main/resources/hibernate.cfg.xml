@@ -51,6 +51,7 @@ Contributor(s):
     <property name="cache.provider_class">
 		    org.hibernate.cache.NoCacheProvider
 		</property>
+    <property name="hibernate.show_sql">true</property>
     <property name="hbm2ddl.auto">validate</property>
   </session-factory>
 </hibernate-configuration>

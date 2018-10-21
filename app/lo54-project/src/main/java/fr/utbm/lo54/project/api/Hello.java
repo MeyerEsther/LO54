@@ -24,7 +24,7 @@ public class Hello {
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   public String sayPlainTextHello() {
-      Location loc = new Location(new Long(1), "Paris");
+      Location loc = new Location(1, "Paris");
       SQLDatabaseService service = new SQLDatabaseService();
       service.createRecordLocation(loc);
     return "Hello Jersey" + loc;
@@ -41,10 +41,7 @@ public class Hello {
   @GET
   @Produces(MediaType.TEXT_HTML)
   public String sayHtmlHello() {
-    Location loc = new Location(new Long(1), "Paris");
-      SQLDatabaseService service = new SQLDatabaseService();
-      service.createRecordLocation(loc);
-    return "Hello Jersey" + loc;
+    return "Hello Jersey";
   }
 
 }

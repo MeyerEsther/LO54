@@ -20,14 +20,14 @@ import javax.persistence.UniqueConstraint;
  * @author Valentin Bourdier
  */
 @Entity
-@Table(name = "course", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name = "course", uniqueConstraints={@UniqueConstraint(columnNames={"code"})})
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true)
+    @Column(name="code", nullable=false, unique=true)
     private String id;
     
     @Column(name="title", nullable=false, unique=true)

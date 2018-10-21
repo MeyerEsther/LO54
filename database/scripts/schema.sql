@@ -2,31 +2,31 @@ CREATE DATABASE IF NOT EXISTS LO54;
 
 USE LO54;
 
-CREATE TABLE IF NOT EXISTS LOCATION (
+CREATE TABLE IF NOT EXISTS location (
     id INT NOT NULL AUTO_INCREMENT,
-    location VARCHAR(255) NOT NULL UNIQUE,
+    city VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY(id)
 );
 
-CREATE TABLE IF NOT EXISTS COURSE (
-    code CHAR(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS course (
+    code varchar(255) NOT NULL,
     title VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY(code)
 );
 
-CREATE TABLE IF NOT EXISTS COURSE_SESSION (
+CREATE TABLE IF NOT EXISTS course_session (
     id INT NOT NULL AUTO_INCREMENT,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     max INT,
-    course_code CHAR(20) NOT NULL,
+    course_code varchar(255) NOT NULL,
     location_id INTEGER NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (course_code) REFERENCES COURSE(code),
-    FOREIGN KEY (location_id) REFERENCES LOCATION(id)
+    FOREIGN KEY (course_code) REFERENCES course(code),
+    FOREIGN KEY (location_id) REFERENCES location(id)
 );
 
-CREATE TABLE IF NOT EXISTS CLIENT (
+CREATE TABLE IF NOT EXISTS client (
     id INT NOT NULL AUTO_INCREMENT,
     lastname VARCHAR(255) NOT NULL,
     firstname VARCHAR(255) NOT NULL,
@@ -35,5 +35,5 @@ CREATE TABLE IF NOT EXISTS CLIENT (
     email VARCHAR(255),
     course_session_id INT NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (course_session_id) REFERENCES COURSE_SESSION(id)
+    FOREIGN KEY (course_session_id) REFERENCES course_session(id)
 );
