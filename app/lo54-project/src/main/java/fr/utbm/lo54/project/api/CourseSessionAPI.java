@@ -7,16 +7,15 @@ package fr.utbm.lo54.project.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.utbm.lo54.project.model.Course;
 import fr.utbm.lo54.project.model.CourseSession;
 import fr.utbm.lo54.project.service.CourseSessionDao;
-import fr.utbm.lo54.project.service.CourseStorerDao;
 import fr.utbm.lo54.project.service.SQLDatabaseService;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -41,6 +40,48 @@ public class CourseSessionAPI {
   @Produces(MediaType.APPLICATION_JSON)
   public String getAllCourseSessions() {
       List<CourseSession> courseSessions = courseSessionStorer.getCourseSessionsAvailables();
+       try {
+           String res = mapper.writeValueAsString(courseSessions);
+           return res;
+       } catch (JsonProcessingException ex) {
+           Logger.getLogger(LocationAPI.class.getName()).log(Level.SEVERE, null, ex);
+           return "{}";
+       }
+  }
+  
+  @GET
+  @Path("/search/{ filter }")
+  @Produces(MediaType.APPLICATION_JSON)
+  public String getAllCourseSessionsWithFilter(@PathParam( "filter" ) String filter) {
+      List<CourseSession> courseSessions = courseSessionStorer.filterCourseSessionsAvailables(filter);
+       try {
+           String res = mapper.writeValueAsString(courseSessions);
+           return res;
+       } catch (JsonProcessingException ex) {
+           Logger.getLogger(LocationAPI.class.getName()).log(Level.SEVERE, null, ex);
+           return "{}";
+       }
+  }
+  
+  @GET
+  @Path("/location/{ locationId }")
+  @Produces(MediaType.APPLICATION_JSON)
+  public String getCourseSessionsForLocation(@PathParam( "locationId" ) String locationId) {
+       List<CourseSession> courseSessions = courseSessionStorer.filterLocationSourceSessions(Integer.parseInt(locationId));
+       try {
+           String res = mapper.writeValueAsString(courseSessions);
+           return res;
+       } catch (JsonProcessingException ex) {
+           Logger.getLogger(LocationAPI.class.getName()).log(Level.SEVERE, null, ex);
+           return "{}";
+       }
+  }
+  
+  @GET
+  @Path("/date/{ date }")
+  @Produces(MediaType.APPLICATION_JSON)
+  public String getCourseSessionsForDate(@PathParam( "date" ) String date) {
+       List<CourseSession> courseSessions = courseSessionStorer.filterDateSourceSessions(date);
        try {
            String res = mapper.writeValueAsString(courseSessions);
            return res;

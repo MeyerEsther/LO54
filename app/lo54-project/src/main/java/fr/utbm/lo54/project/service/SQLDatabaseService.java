@@ -9,10 +9,12 @@ import fr.utbm.lo54.project.model.Course;
 import fr.utbm.lo54.project.model.CourseSession;
 import fr.utbm.lo54.project.model.Location;
 import fr.utbm.lo54.project.utils.HibernateUtil;
+import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -26,35 +28,6 @@ public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, C
     
     public SQLDatabaseService() {
         this.sessionFactory = HibernateUtil.getSessionFactory();
-    }
-
-    @Override
-    public Integer createRecordLocation(Location location) {
-        Session session = sessionFactory.openSession();
-        
-        session.save(location);
-        
-        logger.info("Successfully created Location: " + location);
-        
-        return location.getId();
-    }
-
-    @Override
-    public void updateRecordLocation(Location location) {
-        Session session = sessionFactory.openSession();
-        
-        session.update(location);
-        
-        logger.info("Successfully updated Location: " + location);    
-    }
-
-    @Override
-    public void deleteRecordLocation(Location location) {
-        Session session = sessionFactory.openSession();
-        
-        session.delete(location);
-        
-        logger.info("Successfully deleted Location: " + location);        
     }
 
     @Override
@@ -90,6 +63,45 @@ public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, C
         return courseSessions;  
     }
 
-    
-    
+    @Override
+    public List<CourseSession> filterCourseSessionsAvailables(String filter) {
+        Session session = sessionFactory.openSession();
+        
+        String hql = "from CourseSession WHERE course.title like :filter";
+        Query query = session.createQuery(hql);
+        query.setParameter("filter", "%" + filter + "%");
+        List<CourseSession> courseSessions = query.list();
+        
+        logger.info("Successfully got all courses sessions filter by '" + filter + "' (n=" + courseSessions.size() + ")");
+        
+        return courseSessions;  
+    }
+
+    @Override
+    public List<CourseSession> filterDateSourceSessions(String date) {
+        Session session = sessionFactory.openSession();
+        
+        String hql = "from CourseSession WHERE start_date = :date";
+        Query query = session.createQuery(hql);
+        query.setParameter("date", date);
+        List<CourseSession> courseSessions = query.list();
+        
+        logger.info("Successfully got all courses sessions filter for date '" + date + "' (n=" + courseSessions.size() + ")");
+        
+        return courseSessions;      }
+
+    @Override
+    public List<CourseSession> filterLocationSourceSessions(Integer locationId) {
+        Session session = sessionFactory.openSession();
+        
+        String hql = "from CourseSession WHERE location_id = :locationId";
+        Query query = session.createQuery(hql);
+        query.setParameter("locationId", locationId);
+        List<CourseSession> courseSessions = query.list();
+        
+        logger.info("Successfully got all courses sessions filter for location n°'" + locationId + "' (n=" + courseSessions.size() + ")");
+        
+        return courseSessions;      
+    }
+   
 }
