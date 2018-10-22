@@ -5,11 +5,11 @@
  */
 package fr.utbm.lo54.project.service;
 
+import fr.utbm.lo54.project.model.Client;
 import fr.utbm.lo54.project.model.Course;
 import fr.utbm.lo54.project.model.CourseSession;
 import fr.utbm.lo54.project.model.Location;
 import fr.utbm.lo54.project.utils.HibernateUtil;
-import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -20,7 +20,7 @@ import org.hibernate.query.Query;
  *
  * @author Valentin Bourdier
  */
-public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, CourseSessionDao {
+public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, CourseSessionStorerDao, ClientStorerDao {
     
     private final static Logger logger = Logger.getLogger(SQLDatabaseService.class);
     
@@ -103,5 +103,28 @@ public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, C
         
         return courseSessions;      
     }
+
+    @Override
+    public Integer createClient(Client client) {
+        Session session = sessionFactory.openSession();
+        
+        session.save(client);
+        
+        logger.info("Sucessfully save client '" + client +"' into database");
+        
+        return client.getId();
+    }
+
+    @Override
+    public CourseSession getCourseSession(Integer id) {
+        Session session = sessionFactory.openSession();
+        
+        CourseSession courseSession = session.get(CourseSession.class, id);
+        
+        logger.info("Successfully get from database CourseSession '" + courseSession + "'");
+        
+        return courseSession;     
+    }
+   
    
 }

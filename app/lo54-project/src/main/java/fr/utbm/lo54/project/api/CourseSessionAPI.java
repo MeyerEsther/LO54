@@ -8,7 +8,6 @@ package fr.utbm.lo54.project.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.utbm.lo54.project.model.CourseSession;
-import fr.utbm.lo54.project.service.CourseSessionDao;
 import fr.utbm.lo54.project.service.SQLDatabaseService;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,6 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import fr.utbm.lo54.project.service.CourseSessionStorerDao;
 
 /**
  *
@@ -27,7 +27,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/sessions")
 public class CourseSessionAPI {
     
-   private CourseSessionDao courseSessionStorer = null;
+   private CourseSessionStorerDao courseSessionStorer = null;
    private ObjectMapper mapper = null;
    
    public CourseSessionAPI() {

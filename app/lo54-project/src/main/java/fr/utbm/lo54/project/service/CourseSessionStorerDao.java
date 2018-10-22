@@ -13,11 +13,12 @@ import java.util.List;
  *
  * @author Valentin Bourdier
  */
-public interface CourseSessionDao {
+public interface CourseSessionStorerDao {
     
     public List<CourseSession> getCourseSessionsAvailables();
     public List<CourseSession> filterCourseSessionsAvailables(String filter);
     public List<CourseSession> filterDateSourceSessions(String date);
     public List<CourseSession> filterLocationSourceSessions(Integer locationId);
+    public CourseSession getCourseSession(Integer id);
 
 }
