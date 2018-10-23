@@ -44,10 +44,10 @@
               <i class="fas fa-filter"></i>
               Filters</div>
             <div class="card-body">
-                 <div class="row vertical-align">
+                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label >Looking for a specific <b>date</b> ?</label>
+                            <label>Looking for a specific <b>date</b> ?</label>
                               <input id="date_filter" type="text" class="form-control" placeholder="Enter the date">
                             </div>
                         <button class="btn btn-primary" onclick="location.href='./index.jsp?date='+ document.getElementById('date_filter').value">Submit</button>
@@ -91,6 +91,7 @@
                       <th>Begin date</th>
                       <th>End date</th>
                       <th>Location</th>
+                      <th>Subscribe</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -99,6 +100,7 @@
                       <th>Begin date</th>
                       <th>End date</th>
                       <th>Location</th>
+                      <th>Subscribe</th>
                     </tr>
                   </tfoot>
                 </table>
@@ -123,6 +125,9 @@
 
     </div>
     <!-- /#wrapper -->
+    
+        <jsp:include page="fragments/subscribe_modal.html" />
+        <jsp:include page="fragments/success_modal.html" />
 
         <jsp:include page="fragments/footer.html" />
 

@@ -107,8 +107,11 @@ public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, C
     @Override
     public Integer createClient(Client client) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         
         session.save(client);
+        
+        session.getTransaction().commit();
         
         logger.info("Sucessfully save client '" + client +"' into database");
         
