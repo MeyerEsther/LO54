@@ -1,10 +1,10 @@
 USE LO54;
 
 INSERT INTO location VALUES
-(1, "Paris"),
-(2, "Milan"),
-(3, "Berlin"),
-(4, "Seattle");
+(1, "Paris", "48.864716", "2.349014"),
+(2, "Milan", "45.464211", "9.191383"),
+(3, "Berlin", "52.520008", "13.404954"),
+(4, "Seattle", "47.608013", "-122.335167");
 
 INSERT INTO course VALUES
 (1, "Anthropologie des canibales"),

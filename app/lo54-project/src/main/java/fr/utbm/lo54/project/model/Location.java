@@ -30,13 +30,38 @@ public class Location implements Serializable {
     
     @Column(name="city", nullable=false, unique=true)
     private String city;
+    
+    @Column(name="latitude", nullable=false)
+    private String latitude;
+    
+     @Column(name="longitude", nullable=false)
+    private String longitude;
+
 
     public Location() {
     }
 
-    public Location(Integer id, String city) {
+    public Location(Integer id, String city, String latitude, String longitude) {
         this.id = id;
         this.city = city;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public Integer getId() {
@@ -57,7 +82,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "Location{" + "id=" + id + ", city=" + city + '}';
+        return "Location{" + "id=" + id + ", city=" + city + ", latitude=" + latitude + ", longitude=" + longitude + '}';
     }
 
     @Override
