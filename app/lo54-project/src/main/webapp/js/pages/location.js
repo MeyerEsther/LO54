@@ -19,7 +19,6 @@ var defaultIcon = L.icon({
 });
 
 $.getJSON(localStorage.getItem('url_api') + 'locations/list', function(locations) {
-    console.log(locations)
     locations.forEach(function(location){
        L.marker([location['latitude'], location['longitude']], {icon: defaultIcon}).addTo(mymap).bindPopup("<b>" + location['city'] + "</b><br>Click <a href='index.jsp?location=" + location['id'] + "'>here</a> to see all courses available.");
     });

@@ -32,9 +32,9 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
+              <a href="#">Courses</a>
             </li>
-            <li class="breadcrumb-item active">Overview</li>
+            <li class="breadcrumb-item active">Location</li>
           </ol>
 
           <!-- Area Chart Example-->
@@ -47,9 +47,10 @@
             </div>
           </div>
           
-        <script src="js/leaflet/leaflet.js"></script>
-
         
         <jsp:include page="fragments/footer.html" />
+        <script src="js/leaflet/leaflet.js"></script>
+        <script src="js/pages/location.js"></script>
+
     </body>
 </html>
