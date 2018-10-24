@@ -47,8 +47,10 @@
             </div>
           </div>
           
-        
         <jsp:include page="fragments/footer.html" />
+          
+        
+        <jsp:include page="fragments/js_include.html" />
         <script src="js/leaflet/leaflet.js"></script>
         <script src="js/pages/location.js"></script>
 

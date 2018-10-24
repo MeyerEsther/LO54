@@ -111,14 +111,7 @@
         </div>
         <!-- /.container-fluid -->
 
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
-            </div>
-          </div>
-        </footer>
+            <jsp:include page="fragments/footer.html" />
 
       </div>
       <!-- /.content-wrapper -->
@@ -129,7 +122,7 @@
         <jsp:include page="fragments/subscribe_modal.html" />
         <jsp:include page="fragments/success_modal.html" />
 
-        <jsp:include page="fragments/footer.html" />
+        <jsp:include page="fragments/js_include.html" />
 
         <script src="js/pages/index.js"></script>
         
