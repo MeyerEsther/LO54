@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Page
-    Created on : 21 oct. 2018, 21:46:22
-    Author     : Valentin Bourdier
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

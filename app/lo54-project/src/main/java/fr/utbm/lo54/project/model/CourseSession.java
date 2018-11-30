@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.lo54.project.model;
 
 import java.io.Serializable;
@@ -18,10 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-/**
- *
- * @author Valentin Bourdier
- */
+
+
 @Entity
 @Table(name = "course_session", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class CourseSession implements Serializable {
@@ -30,24 +24,24 @@ public class CourseSession implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true)
+    @Column(name="CS_ID", nullable=false, unique=true)
     private Integer id;
     
-    @Column(name="start_date", nullable=false)
+    @Column(name="CS_START_DATE", nullable=false)
     private Date startDate;
     
-    @Column(name="end_date", nullable=false)
+    @Column(name="CS_END_DATE", nullable=false)
     private Date endDate;
     
-    @Column(name="max", nullable=true)
+    @Column(name="CS_MAX_NUMBER", nullable=true)
     private Integer max;
     
     @OneToOne
-    @JoinColumn(name = "course_code")
+    @JoinColumn(name = "COURSE_ID")
     private Course course;
     
     @OneToOne
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "LOCATION_ID")
     private Location location;
 
     public CourseSession() {

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.lo54.project.model;
 
 import java.io.Serializable;
@@ -17,38 +13,36 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-/**
- *
- * @author Valentin Bourdier
- */
+
+
 @Entity
-@Table(name = "client", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name = "CLIENT", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class Client implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true)
+    @Column(name="CLIENT_ID", nullable=false, unique=true)
     private Integer id;
     
-    @Column(name="lastname", nullable=false)
+    @Column(name="CLIENT_LASTNAME", nullable=false)
     private String lastname;
     
-    @Column(name="firstname", nullable=false)
+    @Column(name="CLIENT_FIRSTNAME", nullable=false)
     private String firstname;
     
-    @Column(name="address", nullable=false)
+    @Column(name="CLIENT_ADDRESS", nullable=false)
     private String address;
     
-    @Column(name="phone", nullable=false)
+    @Column(name="CLIENT_PHONE", nullable=false)
     private String phone;
     
-    @Column(name="email", nullable=false)
+    @Column(name="CLIENT_EMAIL", nullable=false)
     private String email;
     
     @OneToOne
-    @JoinColumn(name = "course_session_id")
+    @JoinColumn(name = "CS_ID")
     private CourseSession courseSession;
 
     public Client() {

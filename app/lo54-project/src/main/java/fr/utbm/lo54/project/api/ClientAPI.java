@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.lo54.project.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -25,10 +21,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author Valentin Bourdier
- */
+
+
 @Path("/clients")
 public class ClientAPI {
     

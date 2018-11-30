@@ -37,20 +37,20 @@ However, if you add GPL Version 2 code and therefore, elected the GPL
 Version 2 license, then the option applies only if the new code is
 made subject to such option by the copyright holder.
 
-Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.url">jdbc:mysql://localhost:3306/LO54</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/course</property>
     <property name="connection.username">root</property>
     <property name="connection.password">root</property>
     <property name="connection.pool_size">20</property>
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="current_session_context_class">thread</property>
-    <property name="cache.provider_class">
-		    org.hibernate.cache.NoCacheProvider
-		</property>
+
+   <!-- <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider
+		</property> -->
+
     <property name="hibernate.show_sql">true</property>
     <property name="hbm2ddl.auto">validate</property>
   </session-factory>

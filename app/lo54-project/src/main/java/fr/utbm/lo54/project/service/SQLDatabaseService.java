@@ -16,10 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-/**
- *
- * @author Valentin Bourdier
- */
+
 public class SQLDatabaseService implements LocationStorerDao, CourseStorerDao, CourseSessionStorerDao, ClientStorerDao {
     
     private final static Logger logger = Logger.getLogger(SQLDatabaseService.class);

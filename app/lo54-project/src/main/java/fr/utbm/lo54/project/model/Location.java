@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.lo54.project.model;
 
 import java.io.Serializable;
@@ -15,27 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-/**
- *
- * @author Valentin Bourdier
- */
+
+
 @Entity
 @Table(name = "location", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class Location implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true)
+    @Column(name="LOCATION_ID", nullable=false, unique=true)
     private Integer id;
     
-    @Column(name="city", nullable=false, unique=true)
+    @Column(name="LOCATION_CITY", nullable=false, unique=true)
     private String city;
     
-    @Column(name="latitude", nullable=false)
-    private String latitude;
-    
-     @Column(name="longitude", nullable=false)
-    private String longitude;
 
 
     public Location() {
@@ -44,24 +33,6 @@ public class Location implements Serializable {
     public Location(Integer id, String city, String latitude, String longitude) {
         this.id = id;
         this.city = city;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
     }
 
     public Integer getId() {
@@ -82,7 +53,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "Location{" + "id=" + id + ", city=" + city + ", latitude=" + latitude + ", longitude=" + longitude + '}';
+        return "Location{" + "id=" + id + ", city=" + city + "}" ;
     }
 
     @Override

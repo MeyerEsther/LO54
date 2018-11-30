@@ -15,22 +15,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-/**
- *
- * @author Valentin Bourdier
- */
+
+
 @Entity
-@Table(name = "course", uniqueConstraints={@UniqueConstraint(columnNames={"code"})})
+@Table(name = "COURSE", uniqueConstraints={@UniqueConstraint(columnNames={"code"})})
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="code", nullable=false, unique=true)
+    @Column(name="COURSE_ID", nullable=false, unique=true)
     private String id;
     
-    @Column(name="title", nullable=false, unique=true)
+    @Column(name="COURSE_TITLE", nullable=false, unique=true)
     private String title;
 
     public Course() {
